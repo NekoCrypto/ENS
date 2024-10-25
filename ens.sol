@@ -109,4 +109,16 @@ contract ENS {
     function getEnsUser(bytes32 _ensDomain) public view returns (address) {
         return ensUsers[_ensDomain];
     }
+
+    /// @notice Converts bytes32 ENS domain to a string
+    /// @param _ensDomain The ENS domain as bytes32
+    /// @return The ENS domain as a string
+    function readENS(bytes32 _ensDomain) public pure returns (string memory) {
+        bytes memory bytesString = new bytes(32);
+        for (uint256 i = 0; i < 32; i++) {
+            bytesString[i] = _ensDomain[i];
+        }
+
+        return string(bytesString);
+    }
 }
